@@ -1,0 +1,93 @@
+body{
+    text-align:center;
+    background:url(neutral.jpg) center center fixed;
+    background-size: cover;
+}
+#header{
+    background:url(https://github.com/Sukriti-Shukla/drawing/blob/main/heading.png?raw=true);
+    height:70px;
+    width:100%;
+    margin: 0px auto;
+    font-size: 3em;
+    color: white;
+    line-height: 75px;
+    background-size: cover;
+}
+.inputContainer{
+    width:200px;
+    margin:0 auto;
+}
+.input{
+    height: 30px;
+    font-size: 1.3em;
+}
+#slider{
+    margin:10px auto;
+}
+#circle{
+    height: 3px;
+    width: 3px;
+    border-radius: 50%;
+    background: black;
+    margin: 0 auto;
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+}
+#thicknessInput{
+    position:relative;
+}
+
+#container{
+    width:500px;
+    height:400px;
+    border: 1px solid black;
+    margin:10px auto;
+}
+#container2{
+    width:600px;
+    height:600px;
+    
+    /* border: 1px solid black; */
+    margin:10px auto;
+}
+#paint{
+    background-color:white;
+    cursor: crosshair;
+}
+.inputContainer2{
+    width:399px;
+    margin:0 auto;
+}
+.input2{
+    width:133px;
+    color:white;
+    font-size: 1.3em;
+    float: left;
+}
+
+.button{
+    background:url(https://github.com/Sukriti-Shukla/drawing/blob/main/heading.png?raw=true);
+    height:50px;
+    padding :10px;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor:pointer;
+    box-shadow: 2px 4px rgba(0,0,0,0.5);
+    position: relative;
+}
+.button:hover{
+    background:url(https://github.com/Sukriti-Shukla/drawing/blob/main/pink.jpg?raw=true);
+    color:rgb(5, 5, 71);
+    background-size: cover;
+}
+.button:active{
+     top:4px;
+}
+
+.eraseMode{
+    background:url(https://github.com/Sukriti-Shukla/drawing/blob/main/back2.jpg?raw=true);
+    background-size: cover;
+    color:white;
+}

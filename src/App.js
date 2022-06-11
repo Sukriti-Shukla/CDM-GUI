@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useRef, useState } from "react";
+import "../src/styles/style.css";
+import Canvas from "./components/Canvas";
+import { ChakraProvider } from "@chakra-ui/react";
+import Nav from "./components/Nav";
+import Sidebar from "./components/Sidebar";
+import Sketch from "react-p5";
+import "../src/styles/style2.css";
 
 function App() {
+  const setup = (p5, canvasParentRef) => {
+    p5.createCanvas(800, 500).parent(canvasParentRef);
+  };
+
+  const draw = (p5) => {
+    p5.background(255, 255, 255);
+    p5.ellipse(100, 100, 100);
+    p5.ellipse(300, 100, 100);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <ChakraProvider>
+        <Nav />
+        <Sidebar />
+        <div id="container2">
+          <Sketch setup={setup} draw={draw} />
+        </div>
+      </ChakraProvider>
     </div>
   );
 }
