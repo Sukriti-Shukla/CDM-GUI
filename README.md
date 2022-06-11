@@ -1,8 +1,11 @@
+# Installing Chakra UI
 
-### npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6
-### npm i @chakra-ui/icons
+### `npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6`
+or 
+### `yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6`
+### `npm i @chakra-ui/icons`
 # or
-### yarn add @chakra-ui/icons
+### `yarn add @chakra-ui/icons`
 
 # Getting Started with Create React App
 
