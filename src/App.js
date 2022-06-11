@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Sidebar from "./components/Sidebar";
 import Sketch from "react-p5";
 import "../src/styles/style2.css";
+import DrawingMenu from "./components/DrawingMenu";
 
 function App() {
   const setup = (p5, canvasParentRef) => {
@@ -22,6 +23,7 @@ function App() {
     <div>
       <ChakraProvider>
         <Nav />
+        <DrawingMenu />
         <Sidebar />
         <div id="container2">
           <Sketch setup={setup} draw={draw} />

@@ -11,18 +11,18 @@ function Sidebar() {
         <ul>
           <li>
             <a href="#">
-              <span>Line</span>
+              <span>Trim</span>
             </a>
           </li>
           <li>
             <a href="#">
-              <i class="ion-ios-settings"></i> <span class="">Rectangle</span>
+              <i class="ion-ios-settings"></i> <span class="">Resize</span>
             </a>
           </li>
           <li>
             <a href="#">
               <i class="ion-ios-briefcase-outline"></i>{" "}
-              <span class="">Ellipse</span>
+              <span class="">Delete</span>
             </a>
           </li>
           <li>
@@ -33,7 +33,7 @@ function Sidebar() {
           </li>
           <li>
             <a href="#">
-              <i class="ion-ios-paper-outline"></i> <span class="">Resize</span>
+              <i class="ion-ios-paper-outline"></i> <span class="">Reset</span>
             </a>
           </li>
           <li>
