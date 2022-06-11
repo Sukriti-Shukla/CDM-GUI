@@ -1,3 +1,9 @@
+
+### npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6
+### npm i @chakra-ui/icons
+# or
+### yarn add @chakra-ui/icons
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
