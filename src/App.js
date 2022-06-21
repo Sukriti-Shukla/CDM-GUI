@@ -9,16 +9,9 @@ import "../src/styles/style2.css";
 import DrawingMenu from "./components/DrawingMenu";
 
 function App() {
-  const setup = (p5, canvasParentRef) => {
-    p5.createCanvas(800, 500).parent(canvasParentRef);
-  };
-
-  const draw = (p5) => {
-    p5.background(255, 255, 255);
-    p5.ellipse(100, 100, 100);
-    p5.ellipse(300, 100, 100);
-  };
-
+  var state={
+    drawState:"Line"
+  }
   return (
     <div>
       <ChakraProvider>
@@ -26,7 +19,7 @@ function App() {
         <DrawingMenu />
         <Sidebar />
         <div id="container2">
-          <Sketch setup={setup} draw={draw} />
+          <Canvas drawState={state.drawState}/>
         </div>
       </ChakraProvider>
     </div>
