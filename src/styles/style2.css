@@ -1,9 +1,11 @@
 body{
+   
     text-align:center;
     background:url(neutral.jpg) center center fixed;
     background-size: cover;
 }
 #header{
+
     background:url(https://github.com/Sukriti-Shukla/drawing/blob/main/heading.png?raw=true);
     height:70px;
     width:100%;
