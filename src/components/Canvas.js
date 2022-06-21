@@ -19,7 +19,7 @@ function Canvas(props) {
   
    const mp = (p5,event) =>{
     if(props.drawState==="Line"){
-    //console.log(event)
+    //console.log(event)~
     st_x=p5.mouseX;
     st_y=p5.mouseY;
     points.push([st_x,st_y])
