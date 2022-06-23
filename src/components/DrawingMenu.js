@@ -11,7 +11,15 @@ function DrawingMenu(props) {
     console.log(draw);
   };
   const handleClickCircle = () => {
-    setDraw("circle");
+    setDraw("Circle");
+    console.log(draw);
+  };
+  const handleClickRectangle = () => {
+    setDraw("Rectangle");
+    console.log(draw);
+  };
+  const handleClickPoint = () => {
+    setDraw("Point");
     console.log(draw);
   };
   return (
@@ -26,9 +34,13 @@ function DrawingMenu(props) {
         Circle
       </a>
       <a href="#ellipse">Ellipse</a>
-      <a href="#rect">Rectangle</a>
+      <a href="#rect" onClick={handleClickRectangle}>
+        Rectangle
+      </a>
       <a href="#curve">Curves</a>
-      <a href="#point">Point</a>
+      <a href="#point" onClick={handleClickPoint}>
+        Point
+      </a>
       <UserContext.Provider value={draw}>{props.children}</UserContext.Provider>
     </div>
   );
