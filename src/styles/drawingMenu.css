@@ -25,3 +25,7 @@
     background-color: rgb(121, 22, 179);
     color: white;
   }
+  .topnav a.active2 {
+    background-color: rgb(76, 5, 116);
+    color: white;
+  }
