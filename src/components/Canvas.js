@@ -3,9 +3,11 @@ import Sketch from "react-p5";
 import "../styles/style2.css";
 import { useContext } from "react";
 import { UserContext } from "./DrawingMenu";
+import { UserContext2 } from "./Sidebar";
 // import p5Types from "p5";
 
 let drawShape;
+let doOperation;
 let points = [];
 
 const setup = (p5, parent) => {
@@ -61,11 +63,14 @@ const mouseReleased = (p5) => {
     p5.point(p5.mouseX, p5.mouseY);
     points = [];
   }
+  if (drawShape === "Reset") {
+    p5.background(255, 255, 255);
+  }
 };
 
 function Canvas(props) {
   drawShape = useContext(UserContext);
-
+  doOperation = useContext(UserContext2);
   return (
     <Sketch
       setup={setup}

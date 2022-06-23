@@ -1,8 +1,15 @@
 import React from "react";
 import "../styles/sidebar.css";
+import { createContext, useContext, useState } from "react";
 
 import { GrDisc } from "react-icons/gr";
+export const UserContext2 = createContext();
 function Sidebar() {
+  const [operation, setOperation] = useState("");
+  const handleClickDelete = () => {
+    setOperation("delete");
+    console.log(operation);
+  };
   return (
     // <section class="app">
     <aside class="sidebar">
@@ -20,7 +27,7 @@ function Sidebar() {
             </a>
           </li>
           <li>
-            <a href="#">
+            <a href="#" onClick={handleClickDelete}>
               <i class="ion-ios-briefcase-outline"></i>{" "}
               <span class="">Delete</span>
             </a>

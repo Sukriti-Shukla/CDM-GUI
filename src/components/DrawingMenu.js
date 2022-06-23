@@ -22,6 +22,10 @@ function DrawingMenu(props) {
     setDraw("Point");
     console.log(draw);
   };
+  const handleClickReset = () => {
+    setDraw("Reset");
+    console.log(draw);
+  };
   return (
     <div class="topnav">
       <a class="active" href="#home">
@@ -40,6 +44,9 @@ function DrawingMenu(props) {
       <a href="#curve">Curves</a>
       <a href="#point" onClick={handleClickPoint}>
         Point
+      </a>
+      <a href="#reset" onClick={handleClickReset}>
+        Reset
       </a>
       <UserContext.Provider value={draw}>{props.children}</UserContext.Provider>
     </div>
