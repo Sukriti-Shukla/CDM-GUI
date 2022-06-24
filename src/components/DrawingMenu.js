@@ -51,6 +51,26 @@ function DrawingMenu(props) {
     setDraw("Reset");
     console.log(draw);
   };
+  const handleClickTriangle = () => {
+    document.getElementById("triangle-btn").classList.add("active");
+    document.getElementById("line-btn").classList.remove("active");
+    document.getElementById("circle-btn").classList.remove("active");
+    document.getElementById("point-btn").classList.remove("active");
+    document.getElementById("rect-btn").classList.remove("active");
+    document.getElementById("reset-btn").classList.remove("active");
+    setDraw("Triangle");
+    console.log(draw);
+  };
+  const handleClickPentagon = () => {
+    document.getElementById("pentagon-btn").classList.add("active");
+    document.getElementById("line-btn").classList.remove("active");
+    document.getElementById("circle-btn").classList.remove("active");
+    document.getElementById("point-btn").classList.remove("active");
+    document.getElementById("rect-btn").classList.remove("active");
+    document.getElementById("reset-btn").classList.remove("active");
+    setDraw("Pentagon");
+    console.log(draw);
+  };
   return (
     <div class="topnav">
       <a class="active2" href="#home">
@@ -74,6 +94,12 @@ function DrawingMenu(props) {
       <a href="#point" id="point-btn" onClick={handleClickPoint}>
         Point
       </a>
+      {/* <a href="#triangle" id="triangle-btn" onClick={handleClickTriangle}>
+        Triangle
+      </a>
+      <a href="#pentagon" id="pentagon-btn" onClick={handleClickPentagon}>
+        Pentagon
+      </a> */}
       <a href="#reset" id="reset-btn" onClick={handleClickReset}>
         Reset
       </a>

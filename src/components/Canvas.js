@@ -29,6 +29,12 @@ const mousePressed = (p5) => {
   if (drawShape === "Point") {
     points.push([p5.mouseX, p5.mouseY]);
   }
+  if (drawShape === "Triangle") {
+    points.push([p5.mouseX, p5.mouseY]);
+  }
+  if (drawShape === "Pentagon") {
+    points.push([p5.mouseX, p5.mouseY]);
+  }
 };
 
 const mouseReleased = (p5) => {
@@ -63,10 +69,40 @@ const mouseReleased = (p5) => {
     p5.point(p5.mouseX, p5.mouseY);
     points = [];
   }
+  if (drawShape === "Triangle") {
+    p5.triangle(
+      points[0][0],
+      points[0][1],
+      points[0][0] + 200,
+      points[0][1] + 200,
+      p5.mouseX,
+      p5.mouseY
+    );
+    points = [];
+  }
+  if (drawShape === "Pentagon") {
+    p5.beginShape();
+    for (let i = 0; i <= 360; i++) {
+      let angle = p5.radians(i);
+      let x1 = 1 + 20 * p5.cos(angle);
+      let y1 = 1 + 20 * p5.sin(angle);
+      p5.vertex(x1, y1);
+    }
+    points = [];
+  }
   if (drawShape === "Reset") {
     p5.background(255, 255, 255);
   }
 };
+function makeRohmbus(p5, x, y, r) {
+  p5.beginShape();
+  for (let i = 0; i <= 360; i++) {
+    let angle = p5.radians(i);
+    let x1 = x + r * p5.cos(angle);
+    let y1 = y + r * p5.sin(angle);
+    p5.vertex(x1, y1);
+  }
+}
 
 function Canvas(props) {
   drawShape = useContext(UserContext);
