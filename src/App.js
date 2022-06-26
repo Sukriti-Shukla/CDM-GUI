@@ -11,6 +11,7 @@ import { UserContext } from "./components/DrawingMenu";
 import DrawingMenu from "./components/DrawingMenu";
 import { Route, Routes } from "react-router-dom";
 import Result from "./components/Result";
+import Canvas2 from "./components/Canvas2";
 let dragX, dragY, moveX, moveY;
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
         <DrawingMenu>
           <Sidebar />
           <div id="container2">
-            <Canvas drawState={state.drawState} />
+            <Canvas2 />
           </div>
         </DrawingMenu>
       </ChakraProvider>

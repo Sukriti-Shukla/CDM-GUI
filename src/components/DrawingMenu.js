@@ -48,7 +48,7 @@ function DrawingMenu(props) {
     document.getElementById("circle-btn").classList.remove("active");
     document.getElementById("point-btn").classList.remove("active");
     document.getElementById("rect-btn").classList.remove("active");
-    setDraw("Reset");
+    setDraw("Ellipse");
     console.log(draw);
   };
   const handleClickTriangle = () => {

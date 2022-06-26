@@ -9,11 +9,18 @@ import { UserContext2 } from "./Sidebar";
 let drawShape;
 let doOperation;
 let points = [];
+let arrayOfShapes = [];
+let data;
+let hold = false;
+let penColor = "black";
+let globalX = 0;
+let globalY = 0;
 
 const setup = (p5, parent) => {
   p5.createCanvas(800, 500).parent(parent);
   p5.background(255, 255, 255);
   p5.stroke(0, 0, 0);
+  p5.frameRate(10);
 };
 
 const mousePressed = (p5) => {
@@ -112,7 +119,7 @@ function Canvas(props) {
       setup={setup}
       // draw={draw}
       mousePressed={mousePressed}
-      // mouseDragged={md}
+      // mouseDragged={mouseDragged}
       mouseReleased={mouseReleased}
     />
   );
