@@ -21,7 +21,7 @@ function DrawingMenu(props) {
     document.getElementById("rect-btn").classList.remove("active");
     document.getElementById("point-btn").classList.remove("active");
     document.getElementById("reset-btn").classList.remove("active");
-    setDraw("Circle");
+    setDraw("Ellipse");
     console.log(draw);
   };
   const handleClickRectangle = () => {
@@ -30,7 +30,7 @@ function DrawingMenu(props) {
     document.getElementById("circle-btn").classList.remove("active");
     document.getElementById("point-btn").classList.remove("active");
     document.getElementById("reset-btn").classList.remove("active");
-    setDraw("Rectangle");
+    setDraw("Rect");
     console.log(draw);
   };
   const handleClickPoint = () => {
@@ -48,7 +48,7 @@ function DrawingMenu(props) {
     document.getElementById("circle-btn").classList.remove("active");
     document.getElementById("point-btn").classList.remove("active");
     document.getElementById("rect-btn").classList.remove("active");
-    setDraw("Ellipse");
+    setDraw("Reset");
     console.log(draw);
   };
   const handleClickTriangle = () => {
