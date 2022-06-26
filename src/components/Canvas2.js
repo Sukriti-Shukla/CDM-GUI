@@ -10,9 +10,11 @@ let strokeWt = 2;
 let globalX = 0;
 let globalY = 0;
 let data;
-let shape = "ellipse";
+let shape;
 let hold = false;
+
 function Canvas2() {
+  shape = useContext(UserContext);
   const [arrayOfShapes, setArrayOfShapes] = useState([]);
   function setup(p5, parent) {
     p5.createCanvas(800, 800).parent(parent);
@@ -20,33 +22,26 @@ function Canvas2() {
     p5.stroke(penColor);
     p5.strokeWeight(strokeWt);
     p5.noFill();
-    
   }
-  
+
   const draw = (p5) => {
     if (arrayOfShapes !== null) {
       for (let i = 0; i < arrayOfShapes.length; i++) {
-        if (arrayOfShapes[i].tool === "ellipse") {
-          var r=Math.sqrt((arrayOfShapes[i].x-arrayOfShapes[i].px)**2 + (arrayOfShapes[i].y-arrayOfShapes[i].py)**2)
-          p5.ellipse(
-            arrayOfShapes[i].x,
-            arrayOfShapes[i].y,
-            2*r,2*r
+        if (arrayOfShapes[i].tool === "Ellipse") {
+          var r = Math.sqrt(
+            (arrayOfShapes[i].x - arrayOfShapes[i].px) ** 2 +
+              (arrayOfShapes[i].y - arrayOfShapes[i].py) ** 2
           );
-          p5.point(
-            arrayOfShapes[i].x,
-            arrayOfShapes[i].y
-          )
-        }
-        else if(arrayOfShapes[i].tool==="line"){
+          p5.ellipse(arrayOfShapes[i].x, arrayOfShapes[i].y, 2 * r, 2 * r);
+          p5.point(arrayOfShapes[i].x, arrayOfShapes[i].y);
+        } else if (arrayOfShapes[i].tool === "Line") {
           p5.line(
             arrayOfShapes[i].x,
             arrayOfShapes[i].y,
             arrayOfShapes[i].px,
             arrayOfShapes[i].py
           );
-        }
-        else if(arrayOfShapes[i].tool=="rect"){
+        } else if (arrayOfShapes[i].tool === "Rect") {
           p5.rectMode(p5.CENTER);
           p5.rect(
             arrayOfShapes[i].x,
@@ -54,11 +49,15 @@ function Canvas2() {
             Math.abs(arrayOfShapes[i].x - arrayOfShapes[i].px) * 2,
             Math.abs(arrayOfShapes[i].y - arrayOfShapes[i].py) * 2
           );
+        } else if (arrayOfShapes[i].tool === "Point") {
+          p5.point(arrayOfShapes[i].x, arrayOfShapes[i].y);
+        } else if (arrayOfShapes[i].tool === "Reset") {
+          setArrayOfShapes([]);
         }
       }
     }
   };
-  console.log(arrayOfShapes)
+  console.log(arrayOfShapes);
   const mouseReleased = (p5) => {
     data = {
       x: globalX,
@@ -69,32 +68,28 @@ function Canvas2() {
       sW: strokeWt,
       tool: shape,
     };
-    if(data.px>0 && data.py>0)
-    setArrayOfShapes([...arrayOfShapes, data]);
+    if (data.px > 0 && data.py > 0) setArrayOfShapes([...arrayOfShapes, data]);
     hold = false;
-    
   };
 
   const mouseDragged = (p5) => {
     p5.background(p5.color(bgColor));
-    
-    if (hold === true) {
-      if(shape==="ellipse"){
-      //p5.push();
-      p5.strokeWeight(strokeWt / 2);
-      var r=Math.sqrt((globalX-p5.mouseX)**2 + (globalY-p5.mouseY)**2)
-      p5.ellipse(
-        globalX, globalY, 2*r,2*r
-      );
-      p5.point(globalX,globalY)
 
-      //p5.pop();
-      }
-      else if(shape==="line"){
+    if (hold === true) {
+      if (shape === "Ellipse") {
+        //p5.push();
         p5.strokeWeight(strokeWt / 2);
-        p5.line(globalX,globalY,p5.mouseX, p5.mouseY);
-      }
-      else if(shape==="rect"){
+        var r = Math.sqrt(
+          (globalX - p5.mouseX) ** 2 + (globalY - p5.mouseY) ** 2
+        );
+        p5.ellipse(globalX, globalY, 2 * r, 2 * r);
+        p5.point(globalX, globalY);
+
+        //p5.pop();
+      } else if (shape === "Line") {
+        p5.strokeWeight(strokeWt / 2);
+        p5.line(globalX, globalY, p5.mouseX, p5.mouseY);
+      } else if (shape === "Rect") {
         p5.strokeWeight(strokeWt / 2);
         p5.rectMode(p5.CENTER);
         p5.rect(
@@ -103,6 +98,9 @@ function Canvas2() {
           Math.abs(globalX - p5.mouseX) * 2,
           Math.abs(globalY - p5.mouseY) * 2
         );
+      } else if (shape === "Point") {
+        p5.strokeWeight(strokeWt / 2);
+        p5.point(globalX, globalY);
       }
     }
   };
