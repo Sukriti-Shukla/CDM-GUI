@@ -16,9 +16,12 @@ let hold = false;
 function Canvas2() {
   shape = useContext(UserContext);
   const [arrayOfShapes, setArrayOfShapes] = useState([]);
+  const [arrayOfShapes2, setArrayOfShapes2] = useState([]);
+
   function setup(p5, parent) {
     p5.createCanvas(800, 800).parent(parent);
     p5.background(p5.color(bgColor));
+
     p5.stroke(penColor);
     p5.strokeWeight(strokeWt);
     p5.noFill();
@@ -52,6 +55,7 @@ function Canvas2() {
         } else if (arrayOfShapes[i].tool === "Point") {
           p5.point(arrayOfShapes[i].x, arrayOfShapes[i].y);
         } else if (arrayOfShapes[i].tool === "Reset") {
+          p5.reset();
           setArrayOfShapes([]);
         }
       }
@@ -59,6 +63,7 @@ function Canvas2() {
   };
   console.log(arrayOfShapes);
   const mouseReleased = (p5) => {
+    p5.text("", p5.mouseX, p5.mouseY);
     data = {
       x: globalX,
       y: globalY,
@@ -84,11 +89,35 @@ function Canvas2() {
         );
         p5.ellipse(globalX, globalY, 2 * r, 2 * r);
         p5.point(globalX, globalY);
-
+        p5.text(
+          "( centre =(" +
+            Math.round(globalX) +
+            ", " +
+            Math.round(globalY) +
+            ") radius=" +
+            r +
+            ")",
+          p5.mouseX,
+          p5.mouseY
+        );
         //p5.pop();
       } else if (shape === "Line") {
         p5.strokeWeight(strokeWt / 2);
         p5.line(globalX, globalY, p5.mouseX, p5.mouseY);
+        var r1 = Math.sqrt(
+          (globalX - p5.mouseX) ** 2 + (globalY - p5.mouseY) ** 2
+        );
+        p5.text(
+          "( starting point =(" +
+            Math.round(globalX) +
+            ", " +
+            Math.round(globalY) +
+            ") length=" +
+            r1 +
+            ")",
+          p5.mouseX,
+          p5.mouseY
+        );
       } else if (shape === "Rect") {
         p5.strokeWeight(strokeWt / 2);
         p5.rectMode(p5.CENTER);
@@ -98,7 +127,28 @@ function Canvas2() {
           Math.abs(globalX - p5.mouseX) * 2,
           Math.abs(globalY - p5.mouseY) * 2
         );
+        var r2 = Math.sqrt(
+          (globalX - p5.mouseX) ** 2 + (globalY - p5.mouseY) ** 2
+        );
+        p5.text(
+          "( centre =(" +
+            Math.round(globalX) +
+            ", " +
+            Math.round(globalY) +
+            ") length= " +
+            Math.abs(globalX - p5.mouseX) * 2 +
+            " width=" +
+            Math.abs(globalY - p5.mouseY) * 2 +
+            ")",
+          p5.mouseX,
+          p5.mouseY
+        );
       } else if (shape === "Point") {
+        p5.text(
+          "(" + Math.round(p5.mouseX) + ", " + Math.round(p5.mouseY) + ")",
+          p5.mouseX,
+          p5.mouseY
+        );
         p5.strokeWeight(strokeWt / 2);
         p5.point(globalX, globalY);
       }
@@ -113,6 +163,27 @@ function Canvas2() {
     }
   };
 
+  // undo and redo on key pressed
+  const keyPressed = (p5) => {
+    if (p5.key === "z") {
+      if (arrayOfShapes.length > 0) {
+        setArrayOfShapes(arrayOfShapes.slice(0, arrayOfShapes.length - 1));
+        setArrayOfShapes2([
+          ...arrayOfShapes2,
+          arrayOfShapes[arrayOfShapes.length - 1],
+        ]);
+      }
+    } else if (p5.key === "x") {
+      if (arrayOfShapes.length > 0) {
+        setArrayOfShapes([
+          ...arrayOfShapes,
+          arrayOfShapes2[arrayOfShapes2.length - 1],
+        ]);
+        setArrayOfShapes2(arrayOfShapes2.slice(0, arrayOfShapes2.length - 1));
+      }
+    }
+  };
+
   return (
     <Sketch
       setup={setup}
@@ -121,6 +192,7 @@ function Canvas2() {
       // mouseDragged={mouseDragged}
       mouseReleased={mouseReleased}
       mouseDragged={mouseDragged}
+      keyPressed={keyPressed}
       draw={draw}
     />
   );
