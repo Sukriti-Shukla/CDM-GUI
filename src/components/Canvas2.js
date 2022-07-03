@@ -17,7 +17,7 @@ function Canvas2() {
   shape = useContext(UserContext);
   const [arrayOfShapes, setArrayOfShapes] = useState([]);
   const [arrayOfShapes2, setArrayOfShapes2] = useState([]);
-
+  const [delt, setDelt] = useState("FAlse");
   function setup(p5, parent) {
     p5.createCanvas(800, 800).parent(parent);
     p5.background(p5.color(bgColor));
@@ -79,8 +79,40 @@ function Canvas2() {
 
   const mouseDragged = (p5) => {
     p5.background(p5.color(bgColor));
-
-    if (hold === true) {
+    if (delt === "True") {
+      if (p5.mouseX > 0 && p5.mouseY > 0) {
+        for (let i = 0; i < arrayOfShapes.length; i++) {
+          if (arrayOfShapes[i].shape === "Ellipse") {
+            console.log(arrayOfShapes[i].x, arrayOfShapes[i].y);
+            if (
+              (p5.mouseX - arrayOfShapes[i].x) ** 2 +
+                (p5.mouseY - arrayOfShapes[i].y) ** 2 <
+              ((arrayOfShapes[i].px - arrayOfShapes[i].x) ** 2 +
+                (arrayOfShapes[i].py - arrayOfShapes[i].y) ** 2) **
+                2
+            ) {
+              console.log("yes");
+              setArrayOfShapes(arrayOfShapes.splice(i, 0));
+              console.log(arrayOfShapes);
+            }
+          } else if (arrayOfShapes[i].shape === "Line") {
+            if (
+              p5.mouseX > arrayOfShapes[i].x &&
+              p5.mouseX <
+                arrayOfShapes[i].x +
+                  Math.abs(arrayOfShapes[i].x - arrayOfShapes[i].px) &&
+              p5.mouseY > arrayOfShapes[i].y &&
+              p5.mouseY <
+                arrayOfShapes[i].y +
+                  Math.abs(arrayOfShapes[i].y - arrayOfShapes[i].py)
+            ) {
+              setArrayOfShapes(arrayOfShapes.splice(i, 1));
+            }
+          }
+        }
+      }
+      setDelt("False");
+    } else if (hold === true) {
       if (shape === "Ellipse") {
         //p5.push();
         p5.strokeWeight(strokeWt / 2);
@@ -151,6 +183,7 @@ function Canvas2() {
         );
         p5.strokeWeight(strokeWt / 2);
         p5.point(globalX, globalY);
+      } else if (shape === "Delete") {
       }
     }
   };
@@ -183,18 +216,25 @@ function Canvas2() {
       }
     }
   };
+  // delete shapes
+  const del = (p5) => {
+    setDelt("True");
+  };
 
   return (
-    <Sketch
-      setup={setup}
-      // draw={draw}
-      mousePressed={mousePressed}
-      // mouseDragged={mouseDragged}
-      mouseReleased={mouseReleased}
-      mouseDragged={mouseDragged}
-      keyPressed={keyPressed}
-      draw={draw}
-    />
+    <div>
+      <button onClick={del}>Delete</button>
+      <Sketch
+        setup={setup}
+        // draw={draw}
+        mousePressed={mousePressed}
+        // mouseDragged={mouseDragged}
+        mouseReleased={mouseReleased}
+        mouseDragged={mouseDragged}
+        keyPressed={keyPressed}
+        draw={draw}
+      />
+    </div>
   );
 }
 
