@@ -12,12 +12,10 @@ import DrawingMenu from "./components/DrawingMenu";
 import { Route, Routes } from "react-router-dom";
 import Result from "./components/Result";
 import Canvas2 from "./components/Canvas2";
+import Canvas3 from "./components/Canvas3";
 let dragX, dragY, moveX, moveY;
 
 function App() {
-  var state = {
-    drawState: "Line",
-  };
   return (
     <div>
       <ChakraProvider>

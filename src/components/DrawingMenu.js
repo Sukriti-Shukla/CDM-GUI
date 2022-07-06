@@ -5,13 +5,16 @@ import "../styles/drawingMenu.css";
 export const UserContext = createContext();
 
 function DrawingMenu(props) {
-  const [draw, setDraw] = useState("line");
+  const [draw, setDraw] = useState("");
+  const [del, setDel] = useState("False");
   const handleClickLine = () => {
     document.getElementById("line-btn").classList.add("active");
     document.getElementById("circle-btn").classList.remove("active");
     document.getElementById("rect-btn").classList.remove("active");
     document.getElementById("point-btn").classList.remove("active");
     document.getElementById("reset-btn").classList.remove("active");
+    document.getElementById("delete-btn").classList.remove("active");
+    document.getElementById("trim-btn").classList.remove("active");
     setDraw("Line");
     console.log(draw);
   };
@@ -21,6 +24,8 @@ function DrawingMenu(props) {
     document.getElementById("rect-btn").classList.remove("active");
     document.getElementById("point-btn").classList.remove("active");
     document.getElementById("reset-btn").classList.remove("active");
+    document.getElementById("delete-btn").classList.remove("active");
+    document.getElementById("trim-btn").classList.remove("active");
     setDraw("Ellipse");
     console.log(draw);
   };
@@ -30,6 +35,8 @@ function DrawingMenu(props) {
     document.getElementById("circle-btn").classList.remove("active");
     document.getElementById("point-btn").classList.remove("active");
     document.getElementById("reset-btn").classList.remove("active");
+    document.getElementById("delete-btn").classList.remove("active");
+    document.getElementById("trim-btn").classList.remove("active");
     setDraw("Rect");
     console.log(draw);
   };
@@ -39,6 +46,8 @@ function DrawingMenu(props) {
     document.getElementById("circle-btn").classList.remove("active");
     document.getElementById("rect-btn").classList.remove("active");
     document.getElementById("reset-btn").classList.remove("active");
+    document.getElementById("delete-btn").classList.remove("active");
+    document.getElementById("trim-btn").classList.remove("active");
     setDraw("Point");
     console.log(draw);
   };
@@ -48,9 +57,33 @@ function DrawingMenu(props) {
     document.getElementById("circle-btn").classList.remove("active");
     document.getElementById("point-btn").classList.remove("active");
     document.getElementById("rect-btn").classList.remove("active");
+    document.getElementById("delete-btn").classList.remove("active");
+    document.getElementById("trim-btn").classList.remove("active");
     setDraw("Reset");
     console.log(draw);
   };
+  const handleClickDelete = () => {
+    document.getElementById("delete-btn").classList.add("active");
+    document.getElementById("line-btn").classList.remove("active");
+    document.getElementById("circle-btn").classList.remove("active");
+    document.getElementById("point-btn").classList.remove("active");
+    document.getElementById("rect-btn").classList.remove("active");
+    document.getElementById("reset-btn").classList.remove("active");
+    document.getElementById("trim-btn").classList.remove("active");
+    setDraw("Delete");
+    console.log(draw);
+  };
+  const handleClickTrim=()=>{
+    document.getElementById("trim-btn").classList.add("active");
+    document.getElementById("delete-btn").classList.remove("active");
+    document.getElementById("line-btn").classList.remove("active");
+    document.getElementById("circle-btn").classList.remove("active");
+    document.getElementById("point-btn").classList.remove("active");
+    document.getElementById("rect-btn").classList.remove("active");
+    document.getElementById("reset-btn").classList.remove("active");
+    setDraw("Trim")
+    console.log(draw)
+  }
   const handleClickTriangle = () => {
     document.getElementById("triangle-btn").classList.add("active");
     document.getElementById("line-btn").classList.remove("active");
@@ -102,6 +135,12 @@ function DrawingMenu(props) {
       </a> */}
       <a href="#reset" id="reset-btn" onClick={handleClickReset}>
         Reset
+      </a>
+      <a href="#delete" id="delete-btn" onClick={handleClickDelete}>
+        Delete
+      </a>
+      <a href="#trim" id="trim-btn" onClick={handleClickTrim}>
+        Trim
       </a>
       <UserContext.Provider value={draw}>{props.children}</UserContext.Provider>
     </div>
