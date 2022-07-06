@@ -104,6 +104,7 @@ function DrawingMenu(props) {
     setDraw("Pentagon");
     console.log(draw);
   };
+
   return (
     <div class="topnav">
       <a class="active2" href="#home">

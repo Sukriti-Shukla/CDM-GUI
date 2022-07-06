@@ -255,6 +255,7 @@ function Canvas2() {
         );
         p5.strokeWeight(strokeWt / 2);
         p5.point(globalX, globalY);
+      } else if (shape === "Delete") {
       }
     }
   };
@@ -310,7 +311,7 @@ function Canvas2() {
       if(x>0 && y>0){
         p5.background(p5.color(bgColor));
         var i=intersectionIndex(arrayOfShapes,x,y)
-        arrayOfShapes=trimIt(arrayOfShapes,i,x,y)
+        //arrayOfShapes=trimIt(arrayOfShapes,i,x,y)
 
       }
     }
