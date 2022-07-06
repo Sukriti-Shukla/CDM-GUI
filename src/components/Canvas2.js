@@ -83,7 +83,7 @@ function intersectionIndex(arrayOfShapes,x,y){
         for(var i=0;i<arrayOfShapes.length;i++){
           if(arrayOfShapes[i].tool==="Ellipse"){
             var r=((arrayOfShapes[i].px - arrayOfShapes[i].x) ** 2 +(arrayOfShapes[i].py - arrayOfShapes[i].y) ** 2) **2;
-            if(doesCircleInterceptCircle(x,y,arrayOfShapes[i].x,arrayOfShapes[i].y,2,Math.sqrt(r))){
+            if(doesCircleInterceptCircle(x,y,arrayOfShapes[i].x,arrayOfShapes[i].y,1,Math.sqrt(r))){
               return i;
             }
           }
@@ -91,12 +91,12 @@ function intersectionIndex(arrayOfShapes,x,y){
             var C={x: x,y:y};
             var A={x:arrayOfShapes[i].x,y:arrayOfShapes[i].y}
             var B={x:arrayOfShapes[i].px,y:arrayOfShapes[i].py}
-            if(doesLineInterceptCircle(A,B,C,2)){
+            if(doesLineInterceptCircle(A,B,C,1)){
               return i;
             }
           }
           else if(arrayOfShapes[i].tool==="Rect"){
-            var circle={x:x,y:y,r:2}
+            var circle={x:x,y:y,r:1}
             var rect={
               x:arrayOfShapes[i].x,
               y:arrayOfShapes[i].y,
